@@ -1,0 +1,107 @@
+Anleitung PiSDR installieren auf Raspi 4 / 400
+
+---------------------------------------------------------------
+Erstellt von Andreas Rodler HB9HDF
+Getestet von Nicole HB3XUY
+
+-----------------------------------------------------------------
+Raspi SD card writer getestet mit Windows 10 und Ubuntu 21.10
+---------------------------------------------------------------
+
+Raspi 400 unter PiSDR getestet mit folgenden SDRs: 
+SDRPlay RSP2Pro
+ADALM PLUTO
+RTL-SDR
+HACKRF One
+
+Raspi 4 unter PiSDR getestet mit:
+SDRPlay RSP2Pro
+RTL-SDR
+HackRF One
+ADALM-Pluto (der ging in GQRX nicht , aber sonst schon...??)
+---------------------------------------------------------------
+
+
+
+Lade den "Raspberry Imager" herunter von folgendem Link:
+https://www.raspberrypi.com/software/
+
+Installiere diese Software auf deinem PC.
+
+Lade das PiSDR image herunter, von hier:
+https://github.com/luigifcruz/pisdr-image
+-> scrolle runter bis "Download Latest Image", dann ist das Image weiter unten auf der Webpage aufgeführt unter "Assets".
+Dateiname: "XXXX-XX-XX-PiSDR-vanilla.img.xz"
+Das Image ist etwa 1.9GB gross.
+
+Schiebe die SD-Karte in den Kartenchreib/leser-Schlitz deines PC's. Du musst möglicherweise einen Kartenadapter MicroSD->FullsizeSD nutzen.
+
+Starte die Raspi Imager Software.
+Klick auf "Operating system - CHOOSE OS"         [kommt das evtl auf Deutsch auf einem DE-PC?]
+Scrolle runter zum Punkt "Use custom" und klicke dies an.
+Ein Dateimanager öffnet sich. Finde die Datei "XXX-XX-XX-PiSDR-vanilla.img.xz" und wähle sie aus.
+
+Auf dem Raspi Imager nun den Button "Storage - CHOOSE STORAGE" anklicken.
+Stelle sicher, dass du die MicroSD-Karte ausgewählt hast, speziell wenn an deinem PC noch weitere Speichermedien (USB-Sticks, externe Festplatten etc.) angeschlossen sind.
+
+(Für Fortgeschrittene: die "Zahnrad"-Schaltfläche öffnet ein Untermenu für weitere Einstellungen, die jedoch mit diesem Image nicht funktionieren. Sie funktionieren nur mit einem normalen Raspian OS Image.)
+
+Klicke auf "WRITE". Bestätige, dass du auf die SD-Karte schreiben willst.
+Dein Betriebssystem wird dich dazu jetzt möglicherweise um Administrator-Privilegien bitten.
+
+Hole dir ein leckeres Getränk, und warte, bis die Karte vollständig beschrieben und verifiziert ist.
+
+Am Ende der Verifikation kannst du den Raspi-Imager schliessen.
+Auf Windows wirst du nun möglicherweise gewarnt, dass die SD-Karte nicht gelesen werden kann, und dass Windows sie neu formatieren will. Bitte schliesse diese Dialoge mit Cancel/Abbrechen - wir wollen die Karte ja nicht erneut überschreiben. 
+Wirf die MicroSD-Karte korrekt aus; dein Betriebssystem bietet eine Funktion dafür. 
+Auf Windows kann es sein, dass die Karte nun gar nicht mehr erkannt wird, also erübrigt sich das Auswerfen.
+
+Schiebe die SD-Karte in deinen Raspi. Achte auf die korrekte Orientierung.
+
+Nun musst du Keyboard, Maus und Monitor an deinen Raspi anschliessen; du kannst auch ein Netzwerkkabel anschliessen falls du kein WLAN verwenden wirst.
+Danach kannst du deinen Raspi ans Netzteil anschliessen.
+
+Der Raspi startet nun auf. Der Startvorgang kann einige Minuten dauern, und der Raspi kann sich dabei selbst neu starten, da er sein Dateisystem optimiert.
+
+Folge den Aufforderungen auf dem Bildschirm, um den Raspi vollständig einzurichten.
+Setze die korrekten Zeit&Keyboard-Einstellungen, und erstelle ein gutes Passwort.
+Dies ist wichtig, sobald der Raspi mit dem Internet verbunden ist.
+
+Wähle dein WLAN-Netzwerk, sofern du nicht über Ethernet (Kabel) verbunden bist.
+Lade KEINE Updates herunter, falls danach gefragt.
+
+Öffne ein Terminal - 4te Schaltfläche von links in der obersten Menuleiste auf dem Desktop.
+Gib den folgenden Befehl ein:   volk_profile    und bestätige mit "Enter".
+Nun wird die VOLK Mathematik-Berechnungs-Engine für Raspi optimiert.
+Dies kann mehrere Minuten dauern.
+Der Vorgang ist abgschlossen, nachdem die Zeile "Writing config..." erschien.
+
+Zum testen wird ein RTL-SDR-Stick empfohlen, die folgende Anleitung Zeit, wie man damit FM-Radio empfängt.
+Andere SDR's die für die folgende Anleitung erfolgreich getestet wurden: SDRPlay, HackRF One, ADALM PLUTO.
+
+Nun kannst du einen SDR an den Raspi anschliessen. Stelle sicher, dass du diesen in einen blauen USB3-Anschluss steckst, denn nur diese sind schnell genug, um die Daten von SDR's ohne Unterbrüche zu übertragen. 
+Vergiss nicht, dass der SDR auch eine Antenne benötigt ;)
+
+Danach öffnest du "GQRX" auf dem Desktop. 
+Wenn du gefragt wirst, wie die Datei geöffnet werden soll, wähle "ausführen"  (nicht in Terminal).
+GXRQ wird nach einigen Sekunden öffnen. 
+
+Falls nun ein Menu zur Geräteauswahl erscheint, wähle im obersten Dropdown-Menu den RTL-SDR aus.
+Falls einfach die Benutzeroberfläche von GQRX erscheint, klicke in der oberen Menuleiste von GQRX auf die Schaltfläche, die Aussieht wie ein Elektronisches Beiteil, und das Menu zur Geräteauswahl erscheint.
+Wähle im obersten Dropdown-Menu den RTL-SDR aus. Dieser ist erkennbar daran, dass er einen Seriennummer (manchmal 000001) hat.
+Es gibt auch eine Auswahl "RDL-SDR Spectrum Server", diese bitte nicht wählen.
+Bestätige den Gerätedialog unten links mot "OK".
+
+Nun öffnet das Hauptfenster von GQRX.
+Stelle die Frequenz 100MHz ein, und drücke auf den "Play" Knopf in oberen Menuleiste von GQRX.
+Du musst nun noch im Dropdown-Menu "Mode" auf "Wide Stereo FM" Demodulation wechseln.
+
+Viel spass beim Radio hören!
+
+
+
+
+
+
+
+
